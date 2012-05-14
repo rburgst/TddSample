@@ -37,7 +37,7 @@ public class TddSampleActivity extends Activity {
 	}
 
 	// Showing multiply results
-	protected void showResult(Editable first, Editable second) {
+	void showResult(Editable first, Editable second) {
 		float num1 = Float.parseFloat(first.toString());
 		float num2 = Float.parseFloat(second.toString());
 		float result = num1 * num2;
