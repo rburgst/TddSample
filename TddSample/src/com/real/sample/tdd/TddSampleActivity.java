@@ -40,8 +40,18 @@ public class TddSampleActivity extends Activity {
 	void showResult(Editable first, Editable second) {
 		float num1 = Float.parseFloat(first.toString());
 		float num2 = Float.parseFloat(second.toString());
-		float result = num1 * num2;
+		float result = multiply(num1, num2);
 		mResult.setText(String.valueOf(result));
+	}
+
+	/**
+	 * This is now a method that can be tested in an easier fashion. It will calculate the product of 2 operands.
+	 * @param num1 		the first operand
+	 * @param num2		the second operand
+	 * @return	the result of their multiplication.
+	 */
+	float multiply(float num1, float num2) {
+		return num1 * num2;
 	}
 
 }
