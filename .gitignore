@@ -2,3 +2,5 @@ TddSample/gen
 TddSampleTest/gen
 local.properties
 TddSampleTest/coverage
+TddSampleTest/junit
+pullxml.txt

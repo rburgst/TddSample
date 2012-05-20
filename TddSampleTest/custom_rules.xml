@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TddSampleActivityTest-custom">
+    
+    <!-- pulls the junit xml result file -->
+    <target name="results" description="pulls the junit xml result file">
+        
+        <mkdir dir="junit"/>
+        
+        <property name="xml.result.file.internal"
+                value="/data/data/${manifest.package}/files/TEST-all.xml" />
+        <property name="xml.result.file"
+                value="/mnt/sdcard/TEST-all.xml" />
+        <property name="android.platform.tools.dir" location="${sdk.dir}/platform-tools" />
+        <property name="target.results.dir" location="junit" />
+        
+        
+        
+        <echo>Downloading XML results from ${xml.result.file}</echo>
+        <echo>adb: ${adb}</echo>
+        <echo>xml result file: ${xml.result.file}</echo>    
+        <echo>target result file: ${target.results.dir}/TEST-all.xml</echo>
+        
+        <exec executable="${adb}" failonerror="true" output="pullxml.txt" logError="true">
+            <arg line="${adb.device.arg}" />
+            <arg value="pull" />
+            <arg value="${xml.result.file}" />
+            <arg value="${target.results.dir}/TEST-all.xml" />
+        </exec>
+    </target>
+
+	<!-- copied from original android build file and modified to produce assets used by hudson/jenkins -->
+    <target name="test" depends="-test-project-check"
+                description="Runs tests from the package defined in test.package property">
+
+        <property name="tested.project.absolute.dir" location="${tested.project.dir}" />
+
+        <property name="test.runner" value="com.neenbedankt.android.test.InstrumentationTestRunner" />
+
+        <!-- Application package of the tested project extracted from its manifest file -->
+        <xpath input="${tested.project.absolute.dir}/AndroidManifest.xml"
+                expression="/manifest/@package" output="tested.manifest.package" />
+        <xpath input="AndroidManifest.xml"
+                expression="/manifest/@package" output="manifest.package" />
+
+        <property name="emma.dump.file"
+                value="/data/data/${tested.manifest.package}/coverage.ec" />
+
+        <if condition="${emma.enabled}">
+            <then>
+                <echo>WARNING: Code Coverage is currently only supported on the emulator and rooted devices.</echo>
+                <run-tests-helper emma.enabled="true">
+                    <extra-instrument-args>
+                        <arg value="-e" />
+                           <arg value="coverageFile" />
+                           <arg value="${emma.dump.file}" />
+                    </extra-instrument-args>
+                </run-tests-helper>
+                <echo>Downloading coverage file into project directory...</echo>
+                <exec executable="${adb}" failonerror="true">
+                    <arg line="${adb.device.arg}" />
+                    <arg value="pull" />
+                    <arg value="${emma.dump.file}" />
+                    <arg value="coverage.ec" />
+                </exec>
+                <echo>Extracting coverage report...</echo>
+                <emma>
+	                <!-- RBUR added encoding="UTF-8" and xml report -->
+                    <report sourcepath="${tested.project.absolute.dir}/${source.dir}"
+									  encoding="UTF-8"
+                                      verbosity="${verbosity}">
+                        <!-- TODO: report.dir or something like should be introduced if necessary -->
+                        <infileset dir=".">
+                            <include name="coverage.ec" />
+                            <include name="coverage.em" />
+                        </infileset>
+                        <!-- TODO: reports in other, indicated by user formats -->
+                        <html outfile="coverage.html" />
+                        <xml outfile="coverage/coverage.xml" columns="name,class,method,block,line"/>
+                   </report>
+                </emma>
+                <echo>Cleaning up temporary files...</echo>
+                <delete file="coverage.ec" />
+                <delete file="coverage.em" />
+                <echo>Saving the report file in ${basedir}/coverage/coverage.html</echo>
+            </then>
+            <else>
+                <run-tests-helper />
+            </else>
+        </if>
+    </target>
+	
+	<!-- ================================= 
+          target: all              
+         ================================= -->
+    <target name="all" depends="emma,debug,install,test,results" description="performs compilation, tests and pulls results">
+        
+    </target>
+
+
+</project>
