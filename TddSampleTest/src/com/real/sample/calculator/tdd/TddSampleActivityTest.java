@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Tests the calculator.
+ * Tests the calculator activity.
  * @author Rainer
  */
 public class TddSampleActivityTest extends ActivityUnitTestCase<TddSampleActivity> {
@@ -46,26 +46,16 @@ public class TddSampleActivityTest extends ActivityUnitTestCase<TddSampleActivit
 	}
 
 	/**
-	 * Unit tests the multiply method with a set of parameters.
-	 */
-	public final void testCalculate() {
-		Assert.assertEquals(16.0f, mClassUnderTest.multiply(4.0f, 4.0f), 0.001f);
-		Assert.assertEquals( 0.0f, mClassUnderTest.multiply(0.0f, 0.0f), 0.001f);
-		Assert.assertEquals( 0.0f, mClassUnderTest.multiply(2.0f, 0.0f), 0.001f);
-		Assert.assertEquals( 2.0f, mClassUnderTest.multiply(2.0f, 1.0f), 0.001f);
-		Assert.assertEquals( -2.0f, mClassUnderTest.multiply(2.0f, -1.0f), 0.001f);
-	}
-	
-	/**
 	 * This test instruments the showResults method and checks its side effects.
 	 */
 	public final void testShowResult() {
 		SpannableStringBuilder operator1 = new SpannableStringBuilder("4");
+		SpannableStringBuilder operator2 = new SpannableStringBuilder("8");
 		
-		mClassUnderTest.showResult(operator1, operator1);
+		mClassUnderTest.showResult(operator1, operator2);
 		
 		TextView result = (TextView) mClassUnderTest.findViewById(R.id.TextView01); 
-		Assert.assertEquals("16.0", result.getText().toString());
+		Assert.assertEquals("32.0", result.getText().toString());
 	}
 
 	/**

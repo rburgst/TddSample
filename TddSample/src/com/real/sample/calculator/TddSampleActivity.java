@@ -1,7 +1,5 @@
 package com.real.sample.calculator;
 
-import com.real.sample.tdd.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,17 +8,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.real.sample.calculator.model.Calculator;
+import com.real.sample.tdd.R;
+
 public class TddSampleActivity extends Activity {
 	EditText mFirstValue;
 	EditText mSecondValue;
 	TextView mResult;
 	Button mCalculate;
+	Calculator mCalculator;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		mCalculator = new Calculator();
+		
 		mFirstValue = (EditText) findViewById(R.id.EditText01);
 		mSecondValue = (EditText) findViewById(R.id.EditText02);
 		mResult = (TextView) findViewById(R.id.TextView01);
@@ -39,21 +43,11 @@ public class TddSampleActivity extends Activity {
 	}
 
 	// Showing multiply results
-	void showResult(Editable first, Editable second) {
+	public void showResult(Editable first, Editable second) {
 		float num1 = Float.parseFloat(first.toString());
 		float num2 = Float.parseFloat(second.toString());
-		float result = multiply(num1, num2);
+		float result = mCalculator.multiply(num1, num2);
 		mResult.setText(String.valueOf(result));
-	}
-
-	/**
-	 * This is now a method that can be tested in an easier fashion. It will calculate the product of 2 operands.
-	 * @param num1 		the first operand
-	 * @param num2		the second operand
-	 * @return	the result of their multiplication.
-	 */
-	float multiply(float num1, float num2) {
-		return num1 * num2;
 	}
 
 }
