@@ -33,11 +33,11 @@ public class CalculatorTest extends AndroidTestCase {
 	 * Unit tests the multiply method with a set of parameters.
 	 */
 	public final void testMultiply() {
-		Assert.assertEquals(16.0f, mObjectUnderTest.multiply(4.0f, 4.0f), 0.001f);
-		Assert.assertEquals( 0.0f, mObjectUnderTest.multiply(0.0f, 0.0f), 0.001f);
-		Assert.assertEquals( 0.0f, mObjectUnderTest.multiply(2.0f, 0.0f), 0.001f);
-		Assert.assertEquals( 2.0f, mObjectUnderTest.multiply(2.0f, 1.0f), 0.001f);
-		Assert.assertEquals( -2.0f, mObjectUnderTest.multiply(2.0f, -1.0f), 0.001f);
+		Assert.assertEquals(16.0f, mObjectUnderTest.multiply(4.0f, 4.0f), 0f);
+		Assert.assertEquals( 0.0f, mObjectUnderTest.multiply(0.0f, 0.0f), 0f);
+		Assert.assertEquals( 0.0f, mObjectUnderTest.multiply(2.0f, 0.0f), 0f);
+		Assert.assertEquals( 2.0f, mObjectUnderTest.multiply(2.0f, 1.0f), 0f);
+		Assert.assertEquals( -2.0f, mObjectUnderTest.multiply(2.0f, -1.0f), 0f);
 	}
 
 }
