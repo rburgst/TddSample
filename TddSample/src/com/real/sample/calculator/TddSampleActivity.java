@@ -1,4 +1,6 @@
-package com.real.sample.tdd;
+package com.real.sample.calculator;
+
+import com.real.sample.tdd.R;
 
 import android.app.Activity;
 import android.os.Bundle;

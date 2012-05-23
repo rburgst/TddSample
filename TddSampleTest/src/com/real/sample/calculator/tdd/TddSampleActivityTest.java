@@ -6,7 +6,10 @@
  * Do not redistribute.
  *
  */
-package com.real.sample.tdd;
+package com.real.sample.calculator.tdd;
+
+import com.real.sample.calculator.TddSampleActivity;
+import com.real.sample.tdd.R;
 
 import junit.framework.Assert;
 import android.content.Intent;
@@ -17,8 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * @author rainer
- *
+ * Tests the calculator.
+ * @author Rainer
  */
 public class TddSampleActivityTest extends ActivityUnitTestCase<TddSampleActivity> {
 

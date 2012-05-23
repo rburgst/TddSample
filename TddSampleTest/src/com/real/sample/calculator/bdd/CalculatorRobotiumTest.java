@@ -1,4 +1,4 @@
-package com.real.sample.tdd.robotium;
+package com.real.sample.calculator.bdd;
 
 import java.util.ArrayList;
 
@@ -7,14 +7,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jayway.android.robotium.solo.Solo;
+import com.real.sample.calculator.TddSampleActivity;
 import com.real.sample.tdd.R;
-import com.real.sample.tdd.TddSampleActivity;
 
-public class TestMain extends
+public class CalculatorRobotiumTest extends
 		ActivityInstrumentationTestCase2<TddSampleActivity> {
 	private Solo solo;
 
-	public TestMain() {
+	public CalculatorRobotiumTest() {
 		super(TddSampleActivity.class);
 	}
 
@@ -55,20 +55,20 @@ public class TestMain extends
 		// Defining our own values to multiply
 		float firstNumber = 10;
 		float secondNumber = 20;
-		float resutl = firstNumber * secondNumber;
+		float result = firstNumber * secondNumber;
 
 		// Access First value (editfiled) and putting firstNumber value in it
-		EditText FirsteditText = (EditText) solo.getView(R.id.EditText01);
-		solo.enterText(FirsteditText, String.valueOf(firstNumber));
+		EditText firstEditText = (EditText) solo.getView(R.id.EditText01);
+		solo.enterText(firstEditText, String.valueOf(firstNumber));
 
 		// Access Second value (editfiled) and putting SecondNumber value in it
-		EditText SecondeditText = (EditText) solo.getView(R.id.EditText02);
-		solo.enterText(SecondeditText, String.valueOf(secondNumber));
+		EditText secondEditText = (EditText) solo.getView(R.id.EditText02);
+		solo.enterText(secondEditText, String.valueOf(secondNumber));
 
 		// Click on Multiply button
 		solo.clickOnButton("Multiply");
 
-		assertTrue(solo.searchText(String.valueOf(resutl)));
+		assertTrue(solo.searchText(String.valueOf(result)));
 
 		TextView outputField = (TextView) solo.getView(R.id.TextView01);
 
@@ -78,7 +78,7 @@ public class TestMain extends
 		TextView output = (TextView) currentTextViews.get(0);
 
 		// Assert to verify result with visible value
-		assertEquals(String.valueOf(resutl), output.getText().toString());
+		assertEquals(String.valueOf(result), output.getText().toString());
 	}
 
 	@Override
