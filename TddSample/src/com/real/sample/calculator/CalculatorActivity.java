@@ -9,9 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.real.sample.calculator.model.Calculator;
-import com.real.sample.tdd.R;
 
-public class TddSampleActivity extends Activity {
+public class CalculatorActivity extends Activity {
 	EditText mFirstValue;
 	EditText mSecondValue;
 	TextView mResult;

@@ -1,15 +1,4 @@
-/*
- * Copyright (c) 2012 RealNetworks.
- * All rights reserved.
- *
- * RealNetworks Confidential and Proprietary information.
- * Do not redistribute.
- *
- */
 package com.real.sample.calculator.tdd;
-
-import com.real.sample.calculator.TddSampleActivity;
-import com.real.sample.tdd.R;
 
 import junit.framework.Assert;
 import android.content.Intent;
@@ -19,30 +8,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.real.sample.calculator.CalculatorActivity;
+import com.real.sample.calculator.R;
+
 /**
  * Tests the calculator activity.
  * @author Rainer
  */
-public class TddSampleActivityTest extends ActivityUnitTestCase<TddSampleActivity> {
+public class CalculatorActivityTest extends ActivityUnitTestCase<CalculatorActivity> {
 
-	TddSampleActivity mClassUnderTest;
+	private CalculatorActivity mClassUnderTest;
 	private Intent mStartIntent;
 	
 	/**
 	 * @param activityClass
 	 */
-	public TddSampleActivityTest() {
-		super(TddSampleActivity.class);
+	public CalculatorActivityTest() {
+		super(CalculatorActivity.class);
 	}
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		mStartIntent = new Intent(Intent.ACTION_MAIN);
 		mClassUnderTest = startActivity(mStartIntent, null, null);
-	}
-
-	protected void tearDown() throws Exception {
-		super.tearDown();
 	}
 
 	/**

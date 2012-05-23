@@ -1,18 +1,9 @@
-/*
- * Copyright (c) 2012 RealNetworks.
- * All rights reserved.
- *
- * RealNetworks Confidential and Proprietary information.
- * Do not redistribute.
- *
- */
 package com.real.sample.calculator.tdd;
 
 import junit.framework.Assert;
+import android.test.AndroidTestCase;
 
 import com.real.sample.calculator.model.Calculator;
-
-import android.test.AndroidTestCase;
 
 /**
  * The test case that tests the calculator model. This test does not rely on any of the Activities infrastructure and

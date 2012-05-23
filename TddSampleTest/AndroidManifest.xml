@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.real.sample.tdd.test"
+    package="com.real.sample.calculator.test"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="10" />
 
+    <!-- we need the different instrumentation runner to be able to get the junit results file from the phone,
+         howerver, this is currently not supported in my build scripts. 
+    -->
     <instrumentation
         android:name="com.neenbedankt.android.test.InstrumentationTestRunner"
-        android:targetPackage="com.real.sample.tdd" />
+        android:targetPackage="com.real.sample.calculator" />
     
     <application
         android:icon="@drawable/ic_launcher"

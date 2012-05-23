@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2012 RealNetworks.
- * All rights reserved.
- *
- * RealNetworks Confidential and Proprietary information.
- * Do not redistribute.
- *
- */
 package com.real.sample.calculator.model;
 
 /**

@@ -7,15 +7,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jayway.android.robotium.solo.Solo;
-import com.real.sample.calculator.TddSampleActivity;
-import com.real.sample.tdd.R;
+import com.real.sample.calculator.CalculatorActivity;
+import com.real.sample.calculator.R;
 
 public class CalculatorRobotiumTest extends
-		ActivityInstrumentationTestCase2<TddSampleActivity> {
+		ActivityInstrumentationTestCase2<CalculatorActivity> {
 	private Solo solo;
 
 	public CalculatorRobotiumTest() {
-		super(TddSampleActivity.class);
+		super(CalculatorActivity.class);
 	}
 
 	@Override
